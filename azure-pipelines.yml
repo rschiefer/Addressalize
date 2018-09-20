@@ -13,4 +13,8 @@ steps:
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
+  input:
+    command: test
+    projects: '**\*.Tests.csproj'
+    arguments: '/p:CollectCoverage=true'
   enabled: true
