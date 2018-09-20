@@ -28,6 +28,8 @@ namespace Tests
         [TestCase("123 Second Avenue Northeast", "123 2ND AVE NE")]
         [TestCase("123 Third Avenue Northeast", "123 3RD AVE NE")]
         [TestCase("123 Fourth Avenue Northeast", "123 4TH AVE NE")]
+        [TestCase("123 Forty Fifth Avenue Northeast", "123 45TH AVE NE")]
+        [TestCase("123 Hundredth Avenue Northeast", "123 100TH AVE NE")]
         public void ShouldNormalizeCorrectly(string source, string expectedResult)
         {
             var result = this.addressalizer.NormalizeAddress(source);
