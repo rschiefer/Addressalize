@@ -13,7 +13,6 @@ namespace Addressalize.StandardData
         {
             this.Add("ALLEY", "ALY");
             this.Add("ALLEE", "ALY");
-            this.Add("ALLEY", "ALY");
             this.Add("ALLY", "ALY");
             this.Add("ANEX", "ANX");
             this.Add("ANNEX", "ANX");
@@ -50,7 +49,6 @@ namespace Addressalize.StandardData
             this.Add("BYPA", "BYP");
             this.Add("BYPAS", "BYP");
             this.Add("BYPS", "BYP");
-            this.Add("CAMP", "BYP");
             this.Add("CAMP", "CP");
             this.Add("CMP", "CP");
             this.Add("CANYON", "CYN");
@@ -90,7 +88,6 @@ namespace Addressalize.StandardData
             this.Add("CRSENT", "CRES");
             this.Add("CRSNT", "CRES");
             this.Add("CREST", "CRST");
-            this.Add("CROSSING", "CRES");
             this.Add("CROSSING", "XING");
             this.Add("CRSSNG", "XING");
             this.Add("CROSSROAD", "XRD");
@@ -100,12 +97,10 @@ namespace Addressalize.StandardData
             this.Add("DAM", "DM");
             this.Add("DIVIDE", "DIV");
             this.Add("DV", "DIV");
-            this.Add("DV", "DIV");
             this.Add("DVD", "DIV");
             this.Add("DRIVE", "DR");
             this.Add("DRIV", "DR");
             this.Add("DRV", "DR");
-            this.Add("DRIVES", "DR");
             this.Add("DRIVES", "DRS");
             this.Add("ESTATE", "EST");
             this.Add("ESTATES", "ESTS");
@@ -267,7 +262,6 @@ namespace Addressalize.StandardData
             this.Add("RADIAL", "RAD");
             this.Add("RADL", "RAD");
             this.Add("RADIEL", "RAD");
-            this.Add("RADL", "RAD");
             this.Add("RAMP", "RAMP");
             this.Add("RANCH", "RNCH");
             this.Add("RANCHES", "RNCH");
@@ -359,7 +353,6 @@ namespace Addressalize.StandardData
             this.Add("VIADUCT", "VIA");
             this.Add("VDCT", "VIA");
             this.Add("VIADCT", "VIA");
-            this.Add("VIADUCT", "VIA");
             this.Add("VIEW", "VW");
             this.Add("VIEWS", "VWS");
             this.Add("VILLAGE", "VLG");
