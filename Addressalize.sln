@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Addressalize", "Addressalize\Addressalize.csproj", "{8C0DA4D6-901D-493B-AC16-83E7523C9E2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Addressalize", "src\Addressalize\Addressalize.csproj", "{ECA72C65-2010-4A7B-A722-97ECA801AED9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Addressalize.Tests", "src\Addressalize.Tests\Addressalize.Tests.csproj", "{C3D3659A-A046-4C51-85DC-2DACF5CDDF89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8C0DA4D6-901D-493B-AC16-83E7523C9E2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C0DA4D6-901D-493B-AC16-83E7523C9E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C0DA4D6-901D-493B-AC16-83E7523C9E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C0DA4D6-901D-493B-AC16-83E7523C9E2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA72C65-2010-4A7B-A722-97ECA801AED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA72C65-2010-4A7B-A722-97ECA801AED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA72C65-2010-4A7B-A722-97ECA801AED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA72C65-2010-4A7B-A722-97ECA801AED9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3D3659A-A046-4C51-85DC-2DACF5CDDF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D3659A-A046-4C51-85DC-2DACF5CDDF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D3659A-A046-4C51-85DC-2DACF5CDDF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D3659A-A046-4C51-85DC-2DACF5CDDF89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
