@@ -9,14 +9,8 @@ pool:
 steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
-  inputs:
-    projects: '**\*.csproj'
-
   enabled: true
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
-  inputs:
-    projects: '**\*.csproj'
-
   enabled: true
