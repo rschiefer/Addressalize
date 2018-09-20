@@ -1,5 +1,7 @@
 ﻿using Addressalize.StandardData;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -10,17 +12,23 @@ namespace Addressalize
         public string NormalizeAddress(string source)
         {
             var segments = source.ToUpper().Split(' ');
-
-            var streetPrefixes = Data.USPS_C1_Street_Suffix_Abbreviations;
-
+            
             var newSegments = segments
-                .Select(s => streetPrefixes.ContainsKey(s) ? streetPrefixes[s] : s)
-                .Select(s => Data.Numbers.ContainsKey(s) ? Data.Numbers[s] : s)
-                .Select(s => Data.Directions.ContainsKey(s) ? Data.Directions[s] : s)
+                .DictionaryLookupOrDefault(Data.USPS_C1_Street_Suffix_Abbreviations)
+                .DictionaryLookupOrDefault(Data.Numbers)
+                .DictionaryLookupOrDefault(Data.Directions)
                 .ToArray();
 
             var result = string.Join(" ", newSegments);
             return result;
+        }
+    }
+
+    public static class Extensions
+    {
+        public static IEnumerable<string> DictionaryLookupOrDefault(this IEnumerable<string> source, Dictionary<string, string> data)
+        {
+            return source.Select(x => data.ContainsKey(x) ? data[x] : x);
         }
     }
 }
