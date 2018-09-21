@@ -16,10 +16,10 @@ Feel free to share improvements or ideas to make the framework better.  Preferab
 
 # Currently Supported Normalizations
 
--Ordinal Number Word Conversion to Numbers (Forty Fifth => 45TH)
--Street Suffix Abbreviation (Avenue => AVE)
--Directional Abbreviations (Northwest => NW)
--Unit Designation Abbreviation (Suite => STE)
+- Ordinal Number Word Conversion to Numbers (Forty Fifth => 45TH)
+- Street Suffix Abbreviation (Avenue => AVE)
+- Directional Abbreviations (Northwest => NW)
+- Unit Designation Abbreviation (Suite => STE)
 
 # Found an issue?
 
