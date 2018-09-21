@@ -32,4 +32,4 @@ steps:
   inputs:
     command: push
     nuGetFeedType: external
-    publishFeedCredentials: rschiefer Nuget
+    publishFeedCredentials: 'rschiefer Nuget'
