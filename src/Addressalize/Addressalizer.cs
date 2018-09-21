@@ -41,7 +41,7 @@ namespace Addressalize
         }
         public static IEnumerable<string> AfterFirstDictionaryLookupLastOrDefault(this IEnumerable<string> source, Dictionary<string, string> data)
         {
-            var segmentsIdsToChange = source.Select((x, i) => new { index = i, inData = data.ContainsKey(x) }).Where((x, i) => x.inData && i > 1).Select(x => x.index);
+            var segmentsIdsToChange = source.Select((x, i) => new { index = i, inData = data.ContainsKey(x) || data.Values.Distinct().Contains(x) }).Where((x, i) => x.inData && i > 1).Select(x => x.index);
             return source.Select((x, i) => i == segmentsIdsToChange.LastOrDefault() ? x.ReplaceFromDictionaryOrDefault(data) : x);
         }
         public static IEnumerable<string> DictionaryLookupThenMergeNextOrDefault(this IEnumerable<string> source,

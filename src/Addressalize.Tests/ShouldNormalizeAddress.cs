@@ -53,6 +53,7 @@ namespace Tests
         
         [TestCase("4217 Olympus View Drive", "4217 OLYMPUS VIEW DR")]
         [TestCase("4217 Olympus View Drive NE", "4217 OLYMPUS VIEW DR NE")]
+        [TestCase("4217 Olympus View DR NE", "4217 OLYMPUS VIEW DR NE")]
         [TestCase("123 Point W", "123 POINT W")]
         public void ShouldReplaceLastButNotOnlyInstanceOfStreetSuffix(string source, string expectedResult)
         {
