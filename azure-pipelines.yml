@@ -23,7 +23,7 @@ steps:
   displayName: 'NuGet pack'
   inputs:
     command: pack
-    packagesToPack: **/Addressalize.csproj
+    packagesToPack: '**/Addressalize.csproj'
     versioningScheme: byPrereleaseNumber
 
 
