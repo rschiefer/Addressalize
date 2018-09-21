@@ -17,44 +17,27 @@ namespace Addressalize
                 .DictionaryLookupOrDefault(Data.USPS_C1_Street_Suffix_Abbreviations)
                 .DictionaryLookupOrDefault(Data.Numbers)
                 .DictionaryLookupOrDefault(Data.Directions)
-                .DictionaryLookupOrDefault(Data.Tens, (s, index) =>
-                {
-                    var nextSegment = s.ElementAt(index + 1);
-                    return s.Where((ss, i) => i != index + 1).Select((ss, i) => i != index ? ss : ss + nextSegment);
-                })
-                .ToArray();
+                .DictionaryLookupThenMergeNextOrDefault(Data.Tens)
+               ;
 
-            var result = string.Join(" ", newSegments);
+            var result = string.Join(" ", newSegments.ToArray());
             return result;
         }
     }
 
     public static class Extensions
     {
-        public static IEnumerable<string> DictionaryLookupOrDefault(this IEnumerable<string> source, Dictionary<string, string> data, Func<IEnumerable<string>, int, IEnumerable<string>> changedSegmentFunc = null)
+        public static IEnumerable<string> DictionaryLookupOrDefault(this IEnumerable<string> source, Dictionary<string, string> data)
         {
-            var changedSegmentIds = new List<int>();
-            var output = source.Select((x, index) =>
-            {
-                if (data.ContainsKey(x))
-                {
-                    changedSegmentIds.Add(index);
-                    return data[x];
-                }
-                else
-                {
-                    return x;                    
-                }
-            });
-            if (changedSegmentFunc != null)
-            {
-                output = output.ToArray();
-                foreach (var index in changedSegmentIds)
-                {
-                    output = changedSegmentFunc(output, index);
-                }
-            }
-            return output;
+            return source.Select(x => data.ContainsKey(x) ? data[x] : x);
+        }
+        public static IEnumerable<string> DictionaryLookupThenMergeNextOrDefault(this IEnumerable<string> source,
+            Dictionary<string, string> data,
+            Func<IEnumerable<string>, int, IEnumerable<string>> changedSegmentFunc = null)
+        {
+            var updatedSegments = source.DictionaryLookupOrDefault(data)
+                .Select((x, i) => x == source.ElementAt(i) ? x : x + source.ElementAt(i + 1));
+            return updatedSegments.Where((x, i) => i == 0 || updatedSegments.ElementAt(i - 1) == source.ElementAt(i - 1));
         }
     }
 }
