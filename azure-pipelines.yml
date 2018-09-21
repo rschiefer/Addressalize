@@ -40,3 +40,6 @@ steps:
     command: push
     nuGetFeedType: external
     publishFeedCredentials: 'rschiefer Nuget'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
