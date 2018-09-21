@@ -18,3 +18,18 @@ steps:
     projects: '**/*.Tests.csproj'
     arguments: '/p:CollectCoverage=true'
   enabled: true
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack'
+  inputs:
+    command: pack
+    packagesToPack: **/Addressalize.csproj
+    versioningScheme: byPrereleaseNumber
+
+
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    nuGetFeedType: external
+    publishFeedCredentials: rschiefer Nuget
