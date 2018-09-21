@@ -14,7 +14,7 @@ namespace Addressalize
 
         public string NormalizeAddress(string source)
         {
-            var segments = Regex.Replace(source, this.PunctuationToRemoveRegex, string.Empty).ToUpper().Split(' ');
+            var segments = Regex.Replace(source, this.PunctuationToRemoveRegex, " ").ToUpper().Split(' ').Where(x => string.IsNullOrEmpty(x) == false);
 
             var newSegments = segments
                 .AfterFirstDictionaryLookupOrDefault(Data.USPS_C1_Street_Suffix_Abbreviations)

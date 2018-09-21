@@ -62,6 +62,8 @@ namespace Tests
 
         [TestCase("4217 Olympus Dr.", "4217 OLYMPUS DR")]
         [TestCase("4217 Olympus Dr.,", "4217 OLYMPUS DR")]
+        [TestCase("4217 Olympus.,Dr", "4217 OLYMPUS DR")]
+        [TestCase("4217 Olympus  Dr.,", "4217 OLYMPUS DR")]
         public void ShouldRemovePunctuation(string source, string expectedResult)
         {
             var result = this.addressalizer.NormalizeAddress(source);
