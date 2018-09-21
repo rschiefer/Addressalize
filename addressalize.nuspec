@@ -10,6 +10,6 @@
         <description>Addressalize is a free address normalization tool.  It is intended to normalize as many address formats as possible with the least amount of effort/upkeep.  There are many paid options for address normalization/validation if correctness/completeness is more important than cost.</description>
     </metadata>
     <files>
-        <file src="bin\Debug\*.dll" target="lib" />
+        <file src="bin\Release\**\*.dll" target="lib" />
     </files>
 </package>
