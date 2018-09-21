@@ -11,7 +11,7 @@ namespace Addressalize
     public class Addressalizer
     {
 
-        public string NormalizeAddress(string source)
+        public string Normalize(string source)
         {
             var segments = source.Replace(".", string.Empty).Replace(",", " ").ToUpper().Split(' ').Where(x => string.IsNullOrEmpty(x) == false);
 

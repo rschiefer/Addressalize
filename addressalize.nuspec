@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Addressalize</id>
+        <version>1.0.0</version>
+        <authors>Robb Schiefer Jr.</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <licenseUrl>https://github.com/rschiefer/Addressalize/blob/master/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/rschiefer/Addressalize</projectUrl>
+        <description>Addressalize is a free address normalization tool.  It is intended to normalize as many address formats as possible with the least amount of effort/upkeep.  There are many paid options for address normalization/validation if correctness/completeness is more important than cost.</description>
+    </metadata>
+    <files>
+        <file src="bin\Debug\*.dll" target="lib" />
+    </files>
+</package>

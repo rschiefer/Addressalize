@@ -28,7 +28,7 @@ steps:
   displayName: 'NuGet pack'
   inputs:
     command: pack
-    packagesToPack: '**/Addressalize.csproj'
+    packagesToPack: '**/addressalize.nuspec'
     versioningScheme: byPrereleaseNumber
 
 

@@ -24,6 +24,14 @@ namespace Tests
             TestContext.WriteLine($"Elapsed ticks: {this.stopWatch.ElapsedTicks}");
         }
 
+        [Test]
+        public void ShouldNormalizeSample()
+        {
+            var addressalizer = new Addressalizer();
+            addressalizer.Normalize("123 Forty Fifth Avenue Northwest Suite A101");
+            // Outputs: 123 45TH AVE NW STE A101
+        }
+
         [TestCase("North Bayer Street", "N BAYER ST")]
         [TestCase("123 North Bayer Street", "123 N BAYER ST")]
         [TestCase("Bayer Street North", "BAYER ST N")]
@@ -34,7 +42,7 @@ namespace Tests
         //[TestCase("Highway Contract Route No. 8", "HC 8")]
         public void ShouldNormalizeAddress(string source, string expectedResult)
         {
-            var result = this.addressalizer.NormalizeAddress(source);
+            var result = this.addressalizer.Normalize(source);
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -46,7 +54,7 @@ namespace Tests
         [TestCase("123 Hundredth Ave", "123 100TH AVE")]
         public void ShouldNormalizeWordNumbers(string source, string expectedResult)
         {
-            var result = this.addressalizer.NormalizeAddress(source);
+            var result = this.addressalizer.Normalize(source);
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -61,7 +69,7 @@ namespace Tests
         [TestCase("123 Mallard North West", "123 MALLARD N W")]
         public void ShouldNormalizeDirections(string source, string expectedResult)
         {
-            var result = this.addressalizer.NormalizeAddress(source);
+            var result = this.addressalizer.Normalize(source);
             Assert.AreEqual(expectedResult, result);
         }
         
@@ -71,7 +79,7 @@ namespace Tests
         [TestCase("123 Point W", "123 PT W")]
         public void ShouldReplaceLastButNotOnlyInstanceOfStreetSuffix(string source, string expectedResult)
         {
-            var result = this.addressalizer.NormalizeAddress(source);
+            var result = this.addressalizer.Normalize(source);
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -81,7 +89,7 @@ namespace Tests
         [TestCase("4217 Olympus  Dr.,", "4217 OLYMPUS DR")]
         public void ShouldRemovePunctuation(string source, string expectedResult)
         {
-            var result = this.addressalizer.NormalizeAddress(source);
+            var result = this.addressalizer.Normalize(source);
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -92,7 +100,7 @@ namespace Tests
             foreach(var address in addresses)
             {
                 Console.WriteLine(address);
-                Console.WriteLine(this.addressalizer.NormalizeAddress(address));
+                Console.WriteLine(this.addressalizer.Normalize(address));
 
             }
         }
@@ -100,9 +108,10 @@ namespace Tests
         [TestCase("123 Main St Suite 15", "123 MAIN ST STE 15")]
         public void ShouldAbbreviateUnitDesignators(string source, string expectedResult)
         {
-            var result = this.addressalizer.NormalizeAddress(source);
+            var result = this.addressalizer.Normalize(source);
             Assert.AreEqual(expectedResult, result);
         }
+
 
         // POSSIBLE FUTURE FEATURES
 
