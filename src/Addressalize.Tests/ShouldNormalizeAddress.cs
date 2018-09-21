@@ -80,21 +80,14 @@ namespace Tests
             }
         }
 
+        [TestCase("123 Main St Suite 15", "123 MAIN ST STE 15")]
+        public void ShouldAbbreviateUnitDesignators(string source, string expectedResult)
+        {
+            var result = this.addressalizer.NormalizeAddress(source);
+            Assert.AreEqual(expectedResult, result);
+        }
+
         // POSSIBLE FUTURE FEATURES
 
-        //[TestCase("123 Point W", "123 POINT W")]
-        //public void ShouldNotReplaceStreetSuffixIfFirstWordInStreet(string source, string expectedResult)
-        //{
-        //    var result = this.addressalizer.NormalizeAddress(source);
-        //    Assert.AreEqual(expectedResult, result);
-        //}
-
-
-        //[TestCase("123 Main St Suite 15", "123 MAIN ST STE 15")]
-        //public void ShouldAbbreviateUnitDesignators(string source, string expectedResult)
-        //{
-        //    var result = this.addressalizer.NormalizeAddress(source);
-        //    Assert.AreEqual(expectedResult, result);
-        //}
     }
 }

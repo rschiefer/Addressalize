@@ -18,6 +18,7 @@ namespace Addressalize
 
             var newSegments = segments
                 .AfterFirstDictionaryLookupOrDefault(Data.USPS_C1_Street_Suffix_Abbreviations)
+                .DictionaryLookupAllOrDefault(Data.USPS_C2_Secondary_Unit_Designators)
                 .DictionaryLookupAllOrDefault(Data.Numbers)
                 .DictionaryLookupAllOrDefault(Data.Directions)
                 .DictionaryLookupThenMergeNextOrDefault(Data.Tens)
