@@ -10,14 +10,13 @@ namespace Addressalize
 {
     public class Addressalizer
     {
-        private readonly string PunctuationToRemoveRegex = @"[.,]";
 
         public string NormalizeAddress(string source)
         {
-            var segments = Regex.Replace(source, this.PunctuationToRemoveRegex, " ").ToUpper().Split(' ').Where(x => string.IsNullOrEmpty(x) == false);
+            var segments = source.Replace(".", string.Empty).Replace(",", " ").ToUpper().Split(' ').Where(x => string.IsNullOrEmpty(x) == false);
 
             var newSegments = segments
-                .AfterFirstDictionaryLookupLastOrDefault(Data.USPS_C1_Street_Suffix_Abbreviations)
+                .DictionaryLookupLastOrDefault(Data.USPS_C1_Street_Suffix_Abbreviations)
                 .DictionaryLookupAllOrDefault(Data.USPS_C2_Secondary_Unit_Designators)
                 .DictionaryLookupAllOrDefault(Data.Numbers)
                 .DictionaryLookupAllOrDefault(Data.Directions)
@@ -39,10 +38,14 @@ namespace Addressalize
         {
             return source.Select(x => x.ReplaceFromDictionaryOrDefault(data));
         }
-        public static IEnumerable<string> AfterFirstDictionaryLookupLastOrDefault(this IEnumerable<string> source, Dictionary<string, string> data)
+        public static IEnumerable<string> DictionaryLookupLastOrDefault(this IEnumerable<string> source, Dictionary<string, string> data)
         {
-            var segmentsIdsToChange = source.Select((x, i) => new { index = i, inData = data.ContainsKey(x) || data.Values.Distinct().Contains(x) }).Where((x, i) => x.inData && i > 1).Select(x => x.index);
-            return source.Select((x, i) => i == segmentsIdsToChange.LastOrDefault() ? x.ReplaceFromDictionaryOrDefault(data) : x);
+            var lastSegmentsIdToChange = source
+                .Select((x, i) => new { index = i, inData = data.ContainsKey(x) || data.Values.Distinct().Contains(x) })
+                .Where((x, i) => x.inData)
+                .Select(x => x.index)
+                .LastOrDefault();
+            return source.Select((x, i) => i == lastSegmentsIdToChange ? x.ReplaceFromDictionaryOrDefault(data) : x);
         }
         public static IEnumerable<string> DictionaryLookupThenMergeNextOrDefault(this IEnumerable<string> source,
             Dictionary<string, string> data,

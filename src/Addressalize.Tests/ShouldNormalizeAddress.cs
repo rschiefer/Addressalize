@@ -21,7 +21,21 @@ namespace Tests
         public void Teardown()
         {
             this.stopWatch.Stop();
-            TestContext.WriteLine($"Elapsed ticks: {this.stopWatch.ElapsedTicks}");            
+            TestContext.WriteLine($"Elapsed ticks: {this.stopWatch.ElapsedTicks}");
+        }
+
+        [TestCase("North Bayer Street", "N BAYER ST")]
+        [TestCase("123 North Bayer Street", "123 N BAYER ST")]
+        [TestCase("Bayer Street North", "BAYER ST N")]
+        [TestCase("123 Bayer Street North", "123 BAYER ST N")]
+        [TestCase("123 Bayer Street North Apartment C", "123 BAYER ST N APT C")]
+        [TestCase("456 Kings Highway, S.W.", "456 KINGS HWY SW")]
+        [TestCase("789 First St Nw", "789 1ST ST NW")]
+        //[TestCase("Highway Contract Route No. 8", "HC 8")]
+        public void ShouldNormalizeAddress(string source, string expectedResult)
+        {
+            var result = this.addressalizer.NormalizeAddress(source);
+            Assert.AreEqual(expectedResult, result);
         }
 
         [TestCase("123 First Ave", "123 1ST AVE")]
@@ -54,7 +68,7 @@ namespace Tests
         [TestCase("4217 Olympus View Drive", "4217 OLYMPUS VIEW DR")]
         [TestCase("4217 Olympus View Drive NE", "4217 OLYMPUS VIEW DR NE")]
         [TestCase("4217 Olympus View DR NE", "4217 OLYMPUS VIEW DR NE")]
-        [TestCase("123 Point W", "123 POINT W")]
+        [TestCase("123 Point W", "123 PT W")]
         public void ShouldReplaceLastButNotOnlyInstanceOfStreetSuffix(string source, string expectedResult)
         {
             var result = this.addressalizer.NormalizeAddress(source);
